@@ -1,0 +1,72 @@
+body{
+background-color: #000814;
+display:flex;
+justify-content: center;
+align-items: center;
+}
+
+.game{
+background-color: #001d3d ;
+width:800px;
+height:800px;
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+}
+
+.logo{
+text-align: center;
+font-family:'Luckiest Guy',cursive;
+color:white;
+font-size: 20px;
+}
+
+.chapitre1{
+font-family:'Pragati Narrow', sans-serif;
+color:#ffd604;
+font-size: 15px;
+margin:-30px;
+}
+
+.texte{
+font-family:'Pragati Narrow', sans-serif;
+color:white;
+font-size: 22px;
+padding-bottom:20px;
+margin-bottom:40px;
+padding-right:30px;
+padding-left:30px;
+}
+
+.center{
+display:block;
+margin-left:auto;
+margin-right:auto;
+    
+}
+
+.options{
+display: flex;
+width:500px;
+height:50px;
+}
+
+.buttons .options{
+justify-content: space-between;
+}
+
+.btn-1,
+.btn-2,
+.btn-3{
+width:150px;
+background-color:#ffd604;
+border-radius: 5px;
+color:#000814;
+font-family:'Pragati Narrow', sans-serif;
+font-size:18px;
+border-color:#2395ff ;
+border-width: 3px;
+padding:5px;
+}
+
