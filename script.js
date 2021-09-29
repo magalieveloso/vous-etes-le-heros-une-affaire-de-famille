@@ -4,8 +4,8 @@ const lereveil={
     img:"assets/phonecall.jpg"
     };
 
-};
-
 const chaptersObj={
-   lereveil: 
+    lereveil: "reveil",
+    text:"votre frère vous appelle",
+    img:"assets/phonecall.jpg"
 };
