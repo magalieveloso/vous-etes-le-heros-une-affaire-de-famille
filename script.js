@@ -7,56 +7,154 @@ const chaptersObj={
     ,appeltelephonique:{
         subtitle:"L'appel",
         text:"Soudainement votre frère vous appelle.",
-        img:"assets/phonecall.jpg"
+        img:"assets/phonecall.jpg",
+        options:["option 1","option 2"],
+        text:"lui repondre ou ne pas lui repondre",
+        action:goToChapter(larencontre)(nepasrepondre)
+
+    }
+    ,nepasrepondre:{
+        subtitle:"Ignorer l'appel",
+        text:"En ignorant l'appel de votre frère, vous restez à la maison et vous vous rendormez.",
+        img:"assets/backtosleep.jpg",
+        action:goToChapter(lereveil)
+
     }
     ,larencontre:{
         subtitle:"La rencontre",
         text:"Il vous demande de le rejoindre chez lui. N'oubliez pas d'amener le code pour rentrer à l'immeuble.",
-        img:"assets/meetup.jpg"
+        img:"assets/meetup.jpg",
+        options:["option 1","option 2"],
+        text:"bicyclette ou voiture",
+        action:goToChapter(allerbicyclette)(arretfeujaune)
+
+    }
+    ,allerbicyclette:{
+        subtitle:"Aller en bicyclette",
+        text:"En choissisant la bicyclette, une voiture qui venait à toute vitesse ne vous voit pas et vous tue.",
+        img:"assets/bike.jpg",
+        action:goToChapter(lereveil)
+
     }
     ,arretfeujaune:{
         subtitle:"Un feu jaune à l'horizon",
         text:"Vous voyez le feu de circulation passer du vert au jaune",
-        img:"assets/yellowlight.jpg"
+        img:"assets/yellowlight.jpg",
+        options:["option 1","option 2"],
+        text:"oui ou non",
+        action:goToChapter(ouiarreterfeujaune)(pasdestationnement)
+
+    }
+    ,ouiarreterfeujaune:{
+        subtitle:"Arreter au feu jaune",
+        text: "En choissisant d'arreter au feu jaune, la voiture derrière vous fonce dessus",
+        img:"assets/caraccident.jpg",
+        action:goToChapter(lereveil)
+
     }
     ,pasdestationnement:{
         subtitle:"Pas de stationnement",
         text:"Vous arrivez chez votre frère, mais il n'y a pas de stationnement de disponible.",
-        img:"assets/noparking.jpg"
+        img:"assets/noparking.jpg",
+        action:goToChapter(solutionstationnement)
+
     }
     ,solutionstationnement:{
         subtitle:"Vous trouvez une place de stationnement",
         text:"Vous stationnez la voiture sur une rue passante à deux minutes de l'habitation de votre frère.",
-        img:"assets/yesparking.jpg"
+        img:"assets/yesparking.jpg",
+        options:["option 1","option 2", "option 3"],
+        text:"laisser votre sac sur le siège passager ou fermer les portes de la voiture ou amener votre sac avec vous",
+        action:goToChapter(voleurs)(arriveedevantimmeuble)
+
     }
-    ,arrivéedevantimmeuble:{
+    ,voleurs:{
+        subtitle:"Laisser votre sac sur le siège passager",
+        text:"En laissant votre sac sur le siège passager suite à votre stationnemnt, des voleurs rentrent dans la voiture.",
+        img:"assets/robbery.jpg",
+        action:goToChapter(lereveil)
+
+    }
+    ,arriveedevantimmeuble:{
         subtitle:"L'arrivée devant l'immeuble d'appartements",
         text:"Vous arrivez devant l'immeuble où habite votre frère.",
-        img:"assets/apartmentbuilding.jpg"
+        img:"assets/apartmentbuilding.jpg",
+        action:goToChapter(codeimmeuble)
+
     }
     ,codeimmeuble:{
         subtitle:"Code pour rentrer",
         text:"Vous êtes dehors de l'immeuble, avez-vous le code pour rentrer et vous rendre à l'appartement?",
-        img:"assets/code.jpeg"
+        img:"assets/code.jpeg",
+        options:["option 1","option 2"],
+        text:"oui ou non",
+        action:goToChapter(noncodeimmeuble)(prendreascenseur)
+
+    }
+    ,noncodeimmeuble:{
+        subtitle:"Code pour rentrer manquant",
+        text:"Puisque vous n'avez pas le code pour rentrer dans l'immeuble, vous devez retourner chez vous pour chercher la feuille avec le code.",
+        img:"assets/drivinghome.jpg",
+        action:goToChapter(lereveil)
+
+
     }
     ,prendreascenseur:{
         subtitle:"L'ascenseur",
         text:"Prenez-vous l'ascenseur pour vous rendre au bon étage?",
-        img:"assets/elevator.jpg"
+        img:"assets/elevator.jpg",
+        options:["option 1","option 2"],
+        text:"oui ou non",
+        action:goToChapter(mauvaisetage)(nonprendreascenseur)
+
+    }
+    ,nonprendreascenseur:{
+        subtitle:"Prendre les escaliers",
+        text:"Puisque vous avez pris les escaliers, vous avez eu une attaque cardiaque en les montant",
+        img:"assets/heartattack.jpg",
+        action:goToChapter(lereveil)
+
+
     }
     ,mauvaisetage:{
         subtitle:"Mauvais étage",
         text:"Quand vous prenez l'ascenseur vous arrivez au mauvais étage",
-        img:"assets/spookyhallway.jpg"
+        img:"assets/spookyhallway.jpg",
+        action:goToChapter(reprendreascenseur)
+
     }
-    ,reprendreascenceur:{
-        subtitle:"Reprendre l'ascenseur",
+    ,reprendreascenseur:{
+        subtitle:"Reprendre l'ascenseur?",
         text:"Pour arrivez au bon étage ainsi que l'apartement de votre frère, prenez-vous de nouveau l'ascenseur?",
-        img:"assets/elevator.jpg"
+        img:"assets/elevator.jpg",
+        options:["option 1","option 2"],
+        text:"oui ou non",
+        action:goToChapter(ouireprendreascenseur)(arriveedansappartement)
+
     }
-    ,arrivéedansappartement:{
+    ,ouireprendreascenseur:{
+        subtitle:"Reprendre l'ascenseur",
+        text:"Puisque vous avez pris l'ascenseur, vous êtes resté coincé à l'intérieur de celui-ci.",
+        img:"assets/stuckelevator.jpeg",
+        action:goToChapter(lereveil)
+
+
+    }
+
+    ,arriveedansappartement:{
         subtitle:"L'arrivée à l'apartement",
         text:"Vous arrivez à l'appartement de votre frère sain et sauf malgré tout les détours! Victoire!!",
-        img:"assets/apartment.jpg"
+        img:"assets/apartment.jpg",
     }
 };
+
+function goToChapter(chapterName){
+console.log(`Chapitre ${chapterName}`);
+}
+
+const chapitreArr=["lereveil","appel telephonique",
+"nepasrepondre","larencontre","allerbicyclette",
+"arretfeujaune","ouiarreterfeujaune","pasdestationnement",
+"solutionstationnement","voleurs","arriveedevantimmeuble",
+"codeimmeuble","noncodeimmeuble","prendreascenseur",
+"mauvaisetage","reprendreascenseur","arriveedansappartement"]
