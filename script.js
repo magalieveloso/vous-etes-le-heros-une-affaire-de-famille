@@ -119,7 +119,7 @@ const chaptersObj={
         subtitle:"Code pour rentrer manquant",
         text:"Puisque vous n'avez pas le code pour rentrer dans l'immeuble, vous devez retourner chez vous pour chercher la feuille avec le code.",
         img:"assets/drivinghome.jpg",
-        action:goToChapter(lereveil)
+        action:"goToChapter('lereveil')"
 
 
     }
@@ -185,3 +185,22 @@ function goToChapter(chapterName){
 console.log(chapter.subtitle);
 console.log(chapter.text);
 }
+
+const chapitre1 = document.querySelector('.game .chapitre1');
+chapitre1.innerText="Le reveil";
+const texte=document.querySelector('.game .texte');
+texte.innerText="Vous vous reveillez comme d'habitude prêt pour votre journée.";
+const img=document.querySelector('.game.img');
+img.innerHTML="assets/wakeup.jpg";
+const optionsArr=["lui repondre","ne pas lui repondre","prendre la bicyclette","prendre la voiture",
+"arreter au feu jaune","continuer à rouler","laisser votre sac sur le siège passager",
+"fermer les portes de la voiture","amener votre sac avec vous","oui","non","oui","non","oui","non"];
+for(let index=0;index<15;index++){
+    const options= optionsArr[index];
+    console.log(options);
+}
+const btn=document.querySelector('.btn .btn-1');
+function choice(){
+    console.log("bonjour");
+};
+btn.addEventListener("click",choice);
