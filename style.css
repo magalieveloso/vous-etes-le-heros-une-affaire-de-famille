@@ -33,8 +33,6 @@ font-weight: bold;
 font-family:'Pragati Narrow', sans-serif;
 color:white;
 font-size: 22px;
-padding-bottom:20px;
-margin-bottom:40px;
 padding-right:30px;
 padding-left:30px;
 }
@@ -51,9 +49,19 @@ display: flex;
 width:500px;
 height:50px;
 }
-
+img{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:600px;
+    height:400px;
+    padding-bottom:30px;
+    padding-top: 30px;
+    
+}
 .buttons .options{
-justify-content: space-between;
+justify-content:center;
+padding:10px;
 }
 
 .btn-1,
