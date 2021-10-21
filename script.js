@@ -206,3 +206,16 @@ const btn=document.querySelector('.btn .btn-1');
 function options(){
     console.log(goToChapter('appeltelephonique'));
 };
+let codeFounded=false;
+function code(){
+ codeFounded= true;
+ console.log("bonjour");
+}
+function codeImpact(){
+  if (codeFounded=== "true"){
+ goToChapter('prendreascenseur')
+}else(codeFounded==="false");{
+    goToChapter('noncodeimmeuble')
+}
+
+} 
