@@ -184,14 +184,17 @@ function goToChapter(chapterName){
     const chapter= chaptersObj[chapterName];
 console.log(chapter.subtitle);
 console.log(chapter.text);
+console.log(chapter.img);
+console.log(chapter.options);
+console.log(chapter.action);
 }
 
 const chapitre1 = document.querySelector('.game .chapitre1');
 chapitre1.innerText="Le reveil";
 const texte=document.querySelector('.game .texte');
 texte.innerText="Vous vous reveillez comme d'habitude prêt pour votre journée.";
-const img=document.querySelector('.game.img');
-img.innerHTML="assets/wakeup.jpg";
+const img=document.querySelector('.game .img');
+img.innerHTML= "<img src=assets/wakeup.jpg>";
 const optionsArr=["lui repondre","ne pas lui repondre","prendre la bicyclette","prendre la voiture",
 "arreter au feu jaune","continuer à rouler","laisser votre sac sur le siège passager",
 "fermer les portes de la voiture","amener votre sac avec vous","oui","non","oui","non","oui","non"];
@@ -200,7 +203,19 @@ for(let index=0;index<15;index++){
     console.log(options);
 }
 const btn=document.querySelector('.btn .btn-1');
-function choice(){
-    console.log("bonjour");
+function options(){
+    console.log(goToChapter('appeltelephonique'));
 };
-btn.addEventListener("click",choice);
+let codeFounded=false;
+function code(){
+ codeFounded= true;
+ console.log("bonjour");
+}
+function codeImpact(){
+  if (codeFounded=== "true"){
+ goToChapter('prendreascenseur')
+}else(codeFounded==="false");{
+    goToChapter('noncodeimmeuble')
+}
+
+} 
