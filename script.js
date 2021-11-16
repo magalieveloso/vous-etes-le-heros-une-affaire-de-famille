@@ -271,14 +271,19 @@ const img=document.querySelector('.game .img');
 img.innerHTML= `<img src="${chapter.img}" class="img">`;
 
 const video=document.querySelector('.game .video');
-if (chaptersObj){
-   `<video src="${chapter.video}" autoplay loop muted">`; 
+if (chaptersObj.video==="video"){
+  video.innerHTML=`<video src="${chapterName.video}" autoplay loop muted">`; 
  }
 
  const son=new Audio('assets/random.wav');
  son.autoplay=true;
 
- localStorage.setItem("lereveil","subtitle");
+ localStorage.setItem("chaptersObj","chapterName");
+ 
+ if(localStorage.getItem("chapterName")
+  !=undefined){
+  chapter=localStorage.getItem("chapterName");
+}
 
 let optionsCode = "";
 for (let index = 0; index < chapter.options.length; index++) {
