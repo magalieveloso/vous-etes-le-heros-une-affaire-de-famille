@@ -1,16 +1,15 @@
 const chaptersObj = {
     explication: {
-        subtitle: "Explication de l'histoire",
-        text: "Bienvenus à Une affaire de famille. L'histoire se déroule dans un univers où vous avez un frère. Au fil de l'histoire vous devrez prendre des décisions importantes donc, prenez le temps de bien y réfléchir. Sinon vous devrez recommencer depuis le début. Néanmoins, profitez bien de l'aventure!",
-        img:"assets/famille.jpeg",
-        options: [
-            {
-              text: "Commencer l'histoire",
-              action: "goToChapter('lereveil')",
-            },
-          ],
+      subtitle: "Explication de l'histoire",
+      text: "Bienvenus à Une affaire de famille. L'histoire se déroule dans un univers où vous avez un frère. Au fil de l'histoire vous devrez prendre des décisions importantes donc, prenez le temps de bien y réfléchir. Sinon vous devrez recommencer depuis le début. Néanmoins, profitez bien de l'aventure!",
+      img:"assets/famille.jpeg",
+      options: [
+        {
+          text: "Commencer l'histoire",
+          action: "goToChapter('lereveil')",
         },
-
+      ],
+    },
     lereveil: {
       subtitle: "Le reveil",
       text: "Vous vous reveillez comme d'habitude prêt pour votre journée.",
@@ -51,7 +50,7 @@ const chaptersObj = {
     larencontre: {
       subtitle: "La rencontre",
       text: "Il vous demande de le rejoindre chez lui. N'oubliez pas d'amener le code pour rentrer à l'immeuble.",
-      video: "assets/meetupvid.mp4",
+      video: "./assets/meetupvid.mp4",
       options: [
         {
           text: "prendre la bicyclette",
@@ -92,7 +91,7 @@ const chaptersObj = {
     ouiarreterfeujaune: {
       subtitle: "Arreter au feu jaune",
       text: "En choissisant d'arreter au feu jaune, la voiture derrière vous fonce dessus",
-      video: "assets/caraccidentvid.mp4",
+      video: "./assets/caraccidentvid.mp4",
       options: [
         {
           text: "Suivant",
@@ -133,7 +132,7 @@ const chaptersObj = {
     voleurs: {
       subtitle: "Laisser votre sac sur le siège passager",
       text: "En laissant votre sac sur le siège passager suite à votre stationnemnt, des voleurs rentrent dans la voiture.",
-      video: "assets/robberyvid.mp4",
+      video: "./assets/robberyvid.mp4",
       options: [
         {
           text: "Suivant",
@@ -181,7 +180,7 @@ const chaptersObj = {
     prendreascenseur: {
       subtitle: "L'ascenseur",
       text: "Prenez-vous l'ascenseur pour vous rendre au bon étage?",
-      video: "assets/elevatorvid.mp4",
+      video: "./assets/elevatorvid.mp4",
       options: [
         {
           text: "oui",
@@ -218,7 +217,7 @@ const chaptersObj = {
     reprendreascenseur: {
       subtitle: "Reprendre l'ascenseur?",
       text: "Pour arrivez au bon étage ainsi que l'apartement de votre frère, prenez-vous de nouveau l'ascenseur?",
-      video: "assets/elevatorvid.mp4",
+      video: "./assets/elevatorvid.mp4",
       options: [
         {
           text: "oui",
@@ -245,7 +244,7 @@ const chaptersObj = {
     arriveedansappartement: {
       subtitle: "L'arrivée à l'apartement",
       text: "Vous arrivez à l'appartement de votre frère sain et sauf malgré tout les détours! Victoire!!",
-      video: "assets/victorydance.mp4",
+      video: "./assets/victorydance.mp4",
       options: [
           {
               text: "Retourner aux explications",
@@ -255,44 +254,46 @@ const chaptersObj = {
     },
   };
 
+const son = new Audio('assets/random.wav');
+
 function goToChapter(chapterName) {
-const chapter= chaptersObj[chapterName];
-console.log(chapter.subtitle);
-console.log(chapter.text);
-console.log(chapter.video);
+  const chapter = chaptersObj[chapterName];
+  console.log(chapter.subtitle);
+  console.log(chapter.text);
+  console.log(chapter.video);
 
-const chapitre1 = document.querySelector('.game .chapitre1');
-chapitre1.innerText=chapter.subtitle;
+  son.currentTime = 0; // Remettre le son au début
+  son.play(); // Jouer le son
 
-const texte=document.querySelector('.game .texte');
-texte.innerText=chapter.text; 
+  const chapitre1 = document.querySelector('.game .chapitre1');
+  chapitre1.innerText = chapter.subtitle;
 
-const img=document.querySelector('.game .img');
-img.innerHTML= `<img src="${chapter.img}" class="img">`;
+  const texte = document.querySelector('.game .texte');
+  texte.innerText = chapter.text; 
 
-const video=document.querySelector('.game .video');
-if (chaptersObj.video==="video"){
-  video.innerHTML=`<video src="${chapterName.video}" autoplay loop muted">`; 
- }
+  const img = document.querySelector('.game .img');
 
- const son=new Audio('assets/random.wav');
- son.autoplay=true;
+  if (chapter.video != undefined) { // Est-ce qu'il y a une vidéo?
+    img.innerHTML = `<video src="${chapter.video}" autoplay loop muted">`; // Si oui, affichons là
+  } else { // Non, il n'y a pas de vidéo
+    img.innerHTML = `<img src="${chapter.img}">`; // Alright, on va afficher l'image alors.
+  }
 
- localStorage.setItem("chaptersObj","chapterName");
- 
- if(localStorage.getItem("chapterName")
-  !=undefined){
-  chapter=localStorage.getItem("chapterName");
-}
+  localStorage.setItem("chapterName", chapterName); // On sauvegarde le nom du chapitre courant
 
-let optionsCode = "";
-for (let index = 0; index < chapter.options.length; index++) {
-  const option = chapter.options[index];
-  optionsCode += `<button onclick="${option.action}" class="btn">${option.text}</button>`;
-}
 
-let options = document.querySelector(".options");
+  let optionsCode = "";
+  for (let index = 0; index < chapter.options.length; index++) {
+    const option = chapter.options[index];
+    optionsCode += `<button onclick="${option.action}" class="btn">${option.text}</button>`;
+  }
+
+  let options = document.querySelector(".options");
   options.innerHTML = optionsCode;
 }
 
-goToChapter("explication");
+let currentChapter = "explication"; // Chapitre à charger au début
+if (localStorage.getItem("chapterName") != undefined) { // Est-ce qu'un chapitre est sauvegardé?
+  currentChapter = localStorage.getItem("chapterName"); // Si oui, on devrait l'utiliser comme chapitre de début
+}
+goToChapter(currentChapter); // Chapitre a afficher au chargement de la page
